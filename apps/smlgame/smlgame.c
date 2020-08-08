@@ -49,7 +49,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR lpCmdLine
         WS_OVERLAPPED | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX,
         100, 100, window_width, window_height, NULL, NULL, hInstance, NULL);
 
-    player_hbrush = CreateSolidBrush(RGB(52, 151, 227));
+    player_hbrush = CreateSolidBrush(RGB(0, 0, 0));
     player_hpen = CreatePen(PS_NULL, 1, RGB(0, 0, 0));
 
     while (GetMessage(&msg, NULL, 0, 0)) {

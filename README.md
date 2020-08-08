@@ -1,31 +1,29 @@
-# SML
-Hello. This is sml. v sml.
+# QR sml boi
+Store a small application or game on a QR code!  
+This repostiory has some example programs with scripts for making sure the builds are small. Remember a QR can only be so big!  
+Also included in this repository are programs for generating and reading the QR codes. 
 
-# Required
+## Required
  - Visual Studio 2015 (will work with other compilers but this is the one I used)
 
-# Build
-Use msvc command prompt to make sure environment is setup correctly:
-```
-cl /c /O1 /GS- sml.c
-link /nologo /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:CONSOLE sml.obj ucrt.lib
-```
+## Build (and compress)
+### Automatic
+Scripts are provided for quick building of the applications in this repository.  
+Either run the build-*NAMEOFAPP*.bat file or run build-all.bat to build all the apps.  
+These scripts will be crinkle compressor as this gave the best results. 
 
-# Build compressed
-## Get crinkler
-Download crinkler from [here](https://github.com/runestubbe/Crinkler/releases/tag/v2.3)  
-A copy is provided in this repository (v2.3) for ease.
+### Manual
 
-## Replace linker
-Copy the Crinkler.exe into the build location (in this case PATH_TO_REPO/app).  
 
-## Build with Crinkler
-Crinkler is now used as the default linker, you can run the same code as before.  
-Use msvc command prompt to make sure environment is setup correctly:
+### Compressors
+Crinkler gave the best results when building the example apps however in this repository are a number of other compressors that were experimented with.   
+#### Crinkler
+This compresser is a direct replacement for the linker.  
+Here is an example for using this compressor.
 ```
-cl /c /O1 /GS- sml.c
-crinkler /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:CONSOLE /OUT:sml.exe sml.obj ucrt.lib
+cd 
+cl /c /W4 /O1 /Os /GS- smlgame.c
+PATH_TO_REPO/crinkler /nologo /NODEFAULTLIB /ENTRY:main /ALIGN:16 /SUBSYSTEM:windows /OUT:%OUTPUT_EXE% %LIB_FILES%
 ```
 
-# Examples
-See [here](https://github.com/Beluki/4k-Example.git) for another example
+## Examples
