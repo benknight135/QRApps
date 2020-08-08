@@ -1,33 +1,55 @@
 @echo off
 
-SET "VS_PATH=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
-SET "CR_PATH=..\compressors\crinkler23\Win64\Crinkler.exe"
+SET initcwd=%cd%
+SET scriptpath=%~dp0
+cd %scriptpath:~0,-1%
 
-echo Building a 32 bit executable using MSVC and crinkler
+SET SOURCE_FILES=%~1
+SET ENTRY=%~2
+SET LIB_FILES=%~3
+SET SOURCE_DIR=%~4
+SET OUTPUT_EXE=%~5
+SET SUBSYSTEM=%~6
+
+SET "VS_PATH=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
+SET "CR_PATH=%scriptpath:~0,-1%\..\compressors\crinkler23\Win64\Crinkler.exe"
+
+echo Building a 32 bit executable using MSVC
 echo Will use the standard install location for Visual Studio 2015
 echo %VS_PATH%
 
+:: setup visual studio environment variables
 echo Running vcvarsall...
-
 :: call "%VS_PATH%" amd64
 call "%VS_PATH%" x86
 
+:: set working directory to source directory
+cd %SOURCE_DIR%
+
+:: compile
 echo building...
+cl /c /W4 /O1 /Os /GS- %SOURCE_FILES%
 
-cl /c /W4 /O1 /Os /GS- sml.c
+:: build exe
+echo linking (and compressing)...
+%CR_PATH% /nologo /NODEFAULTLIB /ENTRY:%ENTRY% /ALIGN:16 /SUBSYSTEM:%SUBSYSTEM% /OUT:%OUTPUT_EXE% %LIB_FILES%
 
-echo linking...
-
-%CR_PATH% /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:CONSOLE /OUT:sml.exe sml.obj ucrt.lib
-
+:: clean object files
 echo cleaning...
-
 del *.obj
 
-pause
+:: reset working directory to script path
+cd %scriptpath:~0,-1%
+:: print filesize of exe
+call filesize.bat "%SOURCE_DIR%\%OUTPUT_EXE%"
 
+:: reset working directory to source directory
+cd "%SOURCE_DIR%"
+:: run exe
 echo running...
-
-sml.exe
+%OUTPUT_EXE%
 
 echo done.
+
+:: reset working directory
+cd %initcwd%

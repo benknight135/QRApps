@@ -32,15 +32,15 @@ cl /c /W4 /O1 /Os /GS- %SOURCE_FILES%
 
 :: build exe
 echo linking...
-link /nologo /ENTRY:%ENTRY% /ALIGN:16 /NODEFAULTLIB /SUBSYSTEM:%SUBSYSTEM% /OUT:%OUTPUT_EXE% %LIB_FILES%
-
-:: compress exe using mpress
-echo compressing...
-%MPRESS_PATH% -s -x %OUTPUT_EXE%
+link /nologo /NODEFAULTLIB /ENTRY:%ENTRY% /ALIGN:16 /SUBSYSTEM:%SUBSYSTEM% /OUT:%OUTPUT_EXE% %LIB_FILES%
 
 :: clean object files
 echo cleaning...
 del *.obj
+
+:: compress exe using mpress
+echo compressing...
+%MPRESS_PATH% -s -x %OUTPUT_EXE%
 
 :: reset working directory to script path
 cd %scriptpath:~0,-1%
