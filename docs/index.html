@@ -1,8 +1,31 @@
 ---
 layout: default
-title: QR Apps
+title: Home
 ---
-<div class="blurb">
-	<h1>QR Apps</h1>
-	<p>Store a small application or game on a QR code!</p>
-</div><!-- /.blurb -->
+<div class="home">
+	<h2>Store a small application or game on a QR code!</h2>
+    <button onclick="location.href='https://github.com/benknight135/QRApps'" type="button">
+        GitHub Repository</button>
+    <p>The project repostiory has some example programs with scripts for
+        making sure the builds are small. Remember a QR can only be so big!<br>Also included in this repository are programs
+        for generating and reading the QR codes.<br>This project was inspired by MattKC&#39;s snakeqr <a
+            href="https://itsmattkc.com/etc/snakeqr/">snakeqr</a></p>
+    <h2 id="apps">Apps</h2>
+    <h3 id="smlgame-by-ben-knight-">SmlGame (by Ben Knight)</h3>
+    <p><img src="https://github.com/benknight135/QRApps/blob/master/apps/smlgame/releases/smlgame-v0.0.2/smlgame-v0.0.2-qr.png?raw=true" alt="Alt text"
+            title="QR for SmlGame v0.0.2"></p>
+    <h3 id="-snakeqr-https-itsmattkc-com-etc-snakeqr-by-mattkc-"><a href="https://itsmattkc.com/etc/snakeqr/">SnakeQR</a>
+        (by MattKC)</h3>
+    <p><img src="https://github.com/benknight135/QRApps/blob/master/apps/snakeqr/snakeqr.png?raw=true" alt="Alt text" title="QR for SnakeQR by MattKC"></p>
+    <h2 id="read-qr">Read QR</h2>
+    <p>Read a QR code from your computer webcam.<br>A script is provided to take the QR code and format it from the binary
+        to a runnable exe.<br>Double click &#39;detectqr.bat&#39; in this repository to launch the detection.<br>Hold the QR
+        code up to the camera and wait for the camera to read it. Once read the application should automatically start. </p>
+    <p><img src="https://github.com/benknight135/QRApps/blob/master/docs/github/smlgame-demo-small.gif?raw=true" alt="Alt text" title="Demo QR reading of smlgame app"></p>
+    <p>If you have more than one camera on your PC you may need to adjust which camera should be used. This can be set on
+        the command line with the option --camera-index:</p>
+    <pre><code><span class="hljs-keyword">cd</span> PATH_TO_REPO
+    detectqr --camera-<span class="hljs-built_in">index</span> <span class="hljs-number">1</span>
+    </code></pre>
+    <p><em>Note: Make sure to replace PATH_TO_REPO with the path to this repository</em> </p>
+</div><!-- /.home -->
