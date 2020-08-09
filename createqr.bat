@@ -63,7 +63,7 @@ IF NOT EXIST %QRENCODE_PATH% (
 )
 
 echo generating qr code...
-%QRENCODE_PATH% -i %option_input% -o %option_output%
+%QRENCODE_PATH% -i %option_input% -o %option_output% -m 5
 
 :: reset working directory
 cd %initcwd%
