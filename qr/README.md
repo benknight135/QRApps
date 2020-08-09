@@ -1,6 +1,8 @@
 ZBAR BAR CODE READER
 ====================
 
+Instructions modified for use with windows x64 system.
+
 ZBar Bar Code Reader is an open source software suite for reading bar codes
 from various sources, such as video streams, image files and raw intensity
 sensors. It supports EAN-13/UPC-A, UPC-E, EAN-8, Code 128, Code 93, Code 39,
