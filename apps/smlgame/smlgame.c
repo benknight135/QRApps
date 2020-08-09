@@ -1,7 +1,18 @@
+ /**
+ * @file smlgame.c
+ * @authors Ben Knight (bknight135@gmail.com)
+ * @brief 
+ * @version 0.0.2
+ * @date 2020-08-09
+ * 
+ * @copyright Copyright (c) Benjamin Knight, 2020
+ * 
+ */
+
 #include <windows.h>
 #include <stdio.h>
 
-#define IDT_TIMER1 1001
+#define IDT_TIMER_GAME_FRAME 1001
 
 enum moveDirection {
     MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT
@@ -79,28 +90,24 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg,
         case VK_LEFT:
 
             // Process the LEFT ARROW key. 
-            //TryMove(hwnd,MOVE_LEFT);
             player_direction = MOVE_LEFT;
             break;
 
         case VK_RIGHT:
 
             // Process the RIGHT ARROW key. 
-            //TryMove(hwnd,MOVE_RIGHT);
             player_direction = MOVE_RIGHT;
             break;
 
         case VK_UP:
 
             // Process the UP ARROW key. 
-            //TryMove(hwnd,MOVE_UP);
             player_direction = MOVE_UP;
             break;
 
         case VK_DOWN:
 
             // Process the DOWN ARROW key. 
-            //TryMove(hwnd,MOVE_DOWN);
             player_direction = MOVE_DOWN;
             break;
 
@@ -144,15 +151,15 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg,
     case WM_TIMER: 
         switch (wParam) 
         { 
-            case IDT_TIMER1: 
-                // process the 10-second timer 
+            case IDT_TIMER_GAME_FRAME: 
+                // process the game timer 
                 Update(hwnd);
                 return 0; 
         } 
         break;
 
     case WM_DESTROY:
-        KillTimer(hwnd, IDT_TIMER1);
+        KillTimer(hwnd, IDT_TIMER_GAME_FRAME);
         PostQuitMessage(0);
         return 0;
     }
@@ -161,7 +168,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg,
 }
 
 void InitFrame(HWND hwnd) {
-    SetTimer(hwnd, IDT_TIMER1, 16, (TIMERPROC)NULL);
+    SetTimer(hwnd, IDT_TIMER_GAME_FRAME, 16, (TIMERPROC)NULL);
 }
 
 void Update(HWND hwnd){
