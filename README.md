@@ -1,4 +1,4 @@
-# SmlApp QR
+# QR Apps
 Store a small application or game on a QR code!  
 This repostiory has some example programs with scripts for making sure the builds are small. Remember a QR can only be so big!  
 Also included in this repository are programs for generating and reading the QR codes.  
