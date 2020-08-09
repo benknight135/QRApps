@@ -6,7 +6,7 @@ SET initcwd=%cd%
 SET scriptpath=%~dp0
 cd %scriptpath:~0,-1%
 
-set option_cam_index=1
+set option_cam_index=0
 
 :: find options in arguments
 set /a arg_count=0

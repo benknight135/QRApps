@@ -11,14 +11,27 @@ This project was inspired by MattKC's snakeqr [snakeqr](https://itsmattkc.com/et
 ### [SnakeQR](https://itsmattkc.com/etc/snakeqr/) (by MattKC)
 ![Alt text](/apps/snakeqr/snakeqr.png?raw=true "QR for SnakeQR by MattKC")
 
+## Read QR
+Read a QR code from your computer webcam using the application provided in this repository 'zbarcam'.  
+A script is provided to take the QR code and format it from the binary to a runnable exe.
+Double click 'detectqr.bat' inside the folder 'scripts' to run it.
+Hold the QR code up to the camera and wait for the camera to read it. Once read the application should automatically start. 
+
+![Alt text](/docs/github/smlgame-demo-small.gif?raw=true "Demo QR reading of smlgame app")
+
+If you have more than one camera on your PC you may need to adjust which camera should be used. This can be set on the command line with the option --camera-index:
+```
+detectqr --camera-index 1
+```
+
 ## Compatibility
 All code in this repository will assume you are running Windows 10 x64 and have the following installed:
  - Visual Studio 2015 (will work with other compilers but this is the one I used)
 
-## Build (and compress)
+## Build examples
 Scripts are provided for quick building of the applications in this repository.  
 Either run the 'build-*NAMEOFAPP*.bat' file or run 'build-all.bat' to build all the apps.  
-These scripts will use crinkler compressor as this gave the best results.  
+These scripts will use crinkler compressor as this gave the best results. 
 
 ## Generate QR
 Using an applications exe we can generate a QR code.  
@@ -27,19 +40,14 @@ To generate a QR code of the smlgame application use 'createqr.bat' in the scrip
 Or do it manually:
 ```
 cd PATH_TO_REPO
-qr\console-qrencode\Windows64\waqrencode.exe -i apps\smlgame\smlgame.exe -o apps\smlgame\qr.png
+qr\console-qrencode\qrencode\Windows64\waqrencode.exe -i apps\smlgame\smlgame.exe -o apps\smlgame\qr.png
 ```
 *Note: Make sure to replace PATH_TO_REPO with the path to this repository*  
-This will output the QR code to a PNG image file. Print this off or save it onto your phone. 
-
-## Read QR
-Read a QR code from your computer webcam using the application provided in this repository 'zbarcam'.  
-A script is provided to take the QR code and format it from the binary to a runnable exe.
-Double click 'Read App From QR.bat' inside the folder 'qr\zbarcam' to run it.  
-*Note: If you have more than one camera on your PC you may need to adjust which camera should be used. To do this edit the script and change '/dev/video0' to '/dev/video1' or whichever video source is required.*
-Hold the QR code up to the camera and wait for the camera to read it. Once read the application should automatically start. 
-
-![Alt text](/docs/github/smlgame-demo-small.gif?raw=true "Demo QR reading of smlgame app")
+This will output the QR code to a PNG image file. Print this off or save it onto your phone.  
+If this folder is missing make sure to pull submodules for this repository:
+```
+git submodule update --init
+```
 
 ## Building small applications
 Using msvc's 'cl' and 'link', an app can be compiled and built. 
@@ -132,3 +140,9 @@ cl /c /W4 /O1 /Os /GS- smlgame.c
 link /nologo /NODEFAULTLIB /ENTRY:WinMain /ALIGN:16 /SUBSYSTEM:windows /OUT:smlgame.exe smlgame.obj kernel32.lib user32.lib gdi32.lib
 PATH_TO_REPO\compressors\petite24\petite smlgame.exe
 ```
+
+## Zbarcam
+Zbarcam is used for the qrcode detection. Zbar is currently maintained by mchehab [here](https://github.com/mchehab/zbar). This repository is included as a submodule of this repository for easy updating of the zbarcam application.  
+### Build
+Building of zbarcam for Windows x64 was not straight forward as the instructions on the github weren't quite right. See the README.md in the 'qr' folder of this repository for updated instructions.  
+To make this quick and easy, a build script is provided in the 'scripts' folder. Run 'build-zbarcam.bat' to install all the required packages and build zbarcam. *WARNING: This will overwrite the current zbarcam version in the 'zbarcam' folder*
