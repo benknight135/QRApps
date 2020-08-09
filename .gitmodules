@@ -1,0 +1,6 @@
+[submodule "qr/zbar"]
+	path = qr/zbar
+	url = https://github.com/mchehab/zbar.git
+[submodule "qr/console-qrencode"]
+	path = qr/console-qrencode
+	url = https://github.com/miyako/console-qrencode.git
