@@ -8,9 +8,7 @@ cd %scriptpath:~0,-1%
 set ZBAR_PATH=%scriptpath:~0,-1%\..\qr\zbar
 
 :: check qrencode folder exists
-IF EXIST ZBAR_PATH (
-    echo zbar found
-) ELSE (
+IF NOT EXIST %ZBAR_PATH% (
     echo zbar not found
     echo getting submodules...
     call git submodule update --init

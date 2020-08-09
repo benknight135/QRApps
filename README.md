@@ -36,8 +36,14 @@ These scripts will use crinkler compressor as this gave the best results.
 ## Generate QR
 Using an applications exe we can generate a QR code.  
 This can be done using the qrencode application provided in this repository.  
-To generate a QR code of the smlgame application use 'createqr.bat' in the scripts folder.  
-Or do it manually:
+To generate a QR code of the smlgame application use 'createqr.bat'.  
+Will use smlgame application by default but you can use this on your own exe:
+```
+cd PATH_TO_REPO
+createqr --input apps\smlgame\smlgame.exe apps\smlgame\qr.png
+```
+
+Or do it all manually:
 ```
 cd PATH_TO_REPO
 qr\console-qrencode\qrencode\Windows64\waqrencode.exe -i apps\smlgame\smlgame.exe -o apps\smlgame\qr.png

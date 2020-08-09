@@ -36,7 +36,7 @@ FOR %%a IN (%*) DO (
     )
 )
 
-set ZBARCAM_PATH=%scriptpath:~0,-1%\..\qr\zbarcam
+set ZBARCAM_PATH=%scriptpath:~0,-1%\qr\zbarcam
 cd %ZBARCAM_PATH%
 
 zbarcam -1 -Sbinary --raw /dev/video%option_cam_index% > %temp%\qrapp.exe && %temp%\qrapp.exe
