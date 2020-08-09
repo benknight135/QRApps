@@ -6,10 +6,10 @@ This project was inspired by MattKC's snakeqr [snakeqr](https://itsmattkc.com/et
 
 ## Apps
 ### SmlGame (by Ben Knight)
-![Alt text](/apps/smlgame/releases/smlgame-v0.0.2/smlgame-v0.0.2-qr.png?raw=true "QR for SmlGame v0.0.2")
+![Alt text](https://github.com/benknight135/QRApps/blob/master/apps/smlgame/releases/smlgame-v0.0.2/smlgame-v0.0.2-qr.png?raw=true "QR for SmlGame v0.0.2")
 
 ### [SnakeQR](https://itsmattkc.com/etc/snakeqr/) (by MattKC)
-![Alt text](/apps/snakeqr/snakeqr.png?raw=true "QR for SnakeQR by MattKC")
+![Alt text](https://github.com/benknight135/QRApps/blob/master/apps/snakeqr/snakeqr.png?raw=true "QR for SnakeQR by MattKC")
 
 ## Read QR
 Read a QR code from your computer webcam.  
@@ -17,7 +17,7 @@ A script is provided to take the QR code and format it from the binary to a runn
 Double click 'detectqr.bat' in this repository to launch the detection.  
 Hold the QR code up to the camera and wait for the camera to read it. Once read the application should automatically start. 
 
-![Alt text](/docs/github/smlgame-demo-small.gif?raw=true "Demo QR reading of smlgame app")
+![Alt text](https://github.com/benknight135/QRApps/blob/master/docs/github/smlgame-demo-small.gif?raw=true "Demo QR reading of smlgame app")
 
 If you have more than one camera on your PC you may need to adjust which camera should be used. This can be set on the command line with the option --camera-index:
 ```
