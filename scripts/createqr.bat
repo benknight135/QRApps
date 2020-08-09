@@ -12,10 +12,16 @@ SET "OUTPUT_PATH=%scriptpath:~0,-1%\..\apps\smlgame\qr.png"
 IF EXIST QRENCODE_PATH (
     echo qrencode found
 ) ELSE (
-    echo git submodule update --init
+    echo qrencode not found
+    echo getting submodules...
+    call git submodule update --init
+    echo submodules received
 )
 
+echo generating qr code...
 %QRENCODE_PATH% -i %APP_PATH% -o %OUTPUT_PATH%
 
 :: reset working directory
 cd %initcwd%
+
+echo done.

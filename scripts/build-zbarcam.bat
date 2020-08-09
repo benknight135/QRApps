@@ -4,6 +4,19 @@ SET initcwd=%cd%
 SET scriptpath=%~dp0
 cd %scriptpath:~0,-1%
 
+:: get zbar path from script location
+set ZBAR_PATH=%scriptpath:~0,-1%\..\qr\zbar
+
+:: check qrencode folder exists
+IF EXIST ZBAR_PATH (
+    echo zbar found
+) ELSE (
+    echo zbar not found
+    echo getting submodules...
+    call git submodule update --init
+    echo submodules received
+)
+
 :: install chocolatey
 powershell -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
 
@@ -26,10 +39,6 @@ FOR %%i IN ("%MSYS_PATH%") DO (
 :: find bash location from msys2 path
 set BASH_PATH=%MSYS_DRIVE%%MSYS_FOLDER%usr\bin\bash.exe
 
-:: get zbar path from script location
-set ZBAR_PATH=%scriptpath:~0,-1%\..\qr\zbar
-set "ZBAR_PATH=%ZBAR_PATH:\=/%"
-
 :: define unix commands
 :: unix command to install packages
 set "CMD_PACMAN=pacman -Syu --noconfirm autoconf libtool automake make autoconf-archive pkg-config gettext-devel"
@@ -37,6 +46,7 @@ set "CMD_PACMAN=pacman -Syu --noconfirm autoconf libtool automake make autoconf-
 :: TODO get mingw64 path automatically
 set "CMD_EXPORT=export PATH=$PATH:/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin"
 :: unix command to set current directory to zbar path
+set "ZBAR_PATH=%ZBAR_PATH:\=/%"
 set "CMD_CD=cd %ZBAR_PATH%"
 :: unix command to setup zbar config
 set "CMD_RECONF=autoreconf -vfi"

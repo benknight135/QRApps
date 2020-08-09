@@ -145,4 +145,57 @@ PATH_TO_REPO\compressors\petite24\petite smlgame.exe
 Zbarcam is used for the qrcode detection. Zbar is currently maintained by mchehab [here](https://github.com/mchehab/zbar). This repository is included as a submodule of this repository for easy updating of the zbarcam application.  
 ### Build
 Building of zbarcam for Windows x64 was not straight forward as the instructions on the github weren't quite right. See the README.md in the 'qr' folder of this repository for updated instructions.  
-To make this quick and easy, a build script is provided in the 'scripts' folder. Run 'build-zbarcam.bat' to install all the required packages and build zbarcam. *WARNING: This will overwrite the current zbarcam version in the 'zbarcam' folder*
+#### Automatic
+To make this quick and easy, a build script is provided in the 'scripts' folder. Run 'build-zbarcam.bat' to install all the required packages and build zbarcam. *WARNING: This will overwrite the current zbarcam version in the 'zbarcam' folder*   
+This will install chocolatey with msys2, make and mingw. Then build zbar using msys2's bash. 
+You will get some errors like:
+```
+cannot stat './doc/man/zbarcam.1': No such file or director
+```
+However these can be ignored as this is only for documentation
+#### Manual
+Install chocolatey in an admin command prompt via powershell:
+```
+powershell -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
+```
+Restart the shell to reload environment varaibles.  
+Install msys2, make and mingw:
+```
+choco install -r --no-progress -y msys2 make mingw
+```
+Start a msys2 bash
+```
+msys2
+```
+In the msys2 bash terminal install required packages:
+```
+pacman -Syu --noconfirm autoconf libtool automake make \
+	autoconf-archive pkg-config gettext-devel
+```
+Add mingw to path (in msys2)
+```
+export PATH=$PATH:/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin
+```
+Configure the zbar build (in msys2)
+```
+autoreconf -vfi
+
+./configure \
+--host=x86_64-w64-mingw32 --prefix=`pwd`/../zbarcam \
+--without-gtk --without-python --without-qt --without-java \
+--without-imagemagick --enable-pthread \
+    --with-directshow --disable-dependency-tracking
+```
+Build and install zbar (in msys2)
+```
+make install
+```
+This will build and install zbarcam to the zbarcam folder of this repository. This generates other files for using it as a library which can be removed.
+```
+cd PATH_TO_REPO
+xcopy /e /v /Y qr\zbarcam\bin qr\zbarcam
+rmdir /s /q qr\zbarcam\bin
+rmdir /s /q qr\zbarcam\include
+rmdir /s /q qr\zbarcam\lib
+rmdir /s /q qr\zbarcam\share
+```
