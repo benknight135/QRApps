@@ -1,7 +1,15 @@
-# QR sml boi
+# SmlApp QR
 Store a small application or game on a QR code!  
 This repostiory has some example programs with scripts for making sure the builds are small. Remember a QR can only be so big!  
-Also included in this repository are programs for generating and reading the QR codes. 
+Also included in this repository are programs for generating and reading the QR codes.  
+This project was inspired by MattKC's snakeqr [snakeqr](https://itsmattkc.com/etc/snakeqr/)
+
+## Apps
+### SmlGame (by Ben Knight)
+![Alt text](/apps/smlgame/releases/smlgame-v0.0.2/smlgame-v0.0.2-qr.png?raw=true "QR for SmlGame v0.0.2")
+
+### [SnakeQR](https://itsmattkc.com/etc/snakeqr/) (by MattKC)
+![Alt text](/apps/snakeqr/snakeqr.png?raw=true "QR for SnakeQR by MattKC")
 
 ## Compatibility
 All code in this repository will assume you are running Windows 10 x64 and have the following installed:
