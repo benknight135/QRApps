@@ -12,17 +12,19 @@ This project was inspired by MattKC's snakeqr [snakeqr](https://itsmattkc.com/et
 ![Alt text](/apps/snakeqr/snakeqr.png?raw=true "QR for SnakeQR by MattKC")
 
 ## Read QR
-Read a QR code from your computer webcam using the application provided in this repository 'zbarcam'.  
-A script is provided to take the QR code and format it from the binary to a runnable exe.
-Double click 'detectqr.bat' inside the folder 'scripts' to run it.
+Read a QR code from your computer webcam.  
+A script is provided to take the QR code and format it from the binary to a runnable exe.  
+Double click 'detectqr.bat' in this repository to launch the detection.  
 Hold the QR code up to the camera and wait for the camera to read it. Once read the application should automatically start. 
 
 ![Alt text](/docs/github/smlgame-demo-small.gif?raw=true "Demo QR reading of smlgame app")
 
 If you have more than one camera on your PC you may need to adjust which camera should be used. This can be set on the command line with the option --camera-index:
 ```
+cd PATH_TO_REPO
 detectqr --camera-index 1
 ```
+*Note: Make sure to replace PATH_TO_REPO with the path to this repository*  
 
 ## Compatibility
 All code in this repository will assume you are running Windows 10 x64 and have the following installed:
@@ -42,6 +44,7 @@ Will use smlgame application by default but you can use this on your own exe:
 cd PATH_TO_REPO
 createqr --input apps\smlgame\smlgame.exe apps\smlgame\qr.png
 ```
+*Note: Make sure to replace PATH_TO_REPO with the path to this repository*  
 
 Or do it all manually:
 ```
@@ -126,6 +129,7 @@ link /nologo /NODEFAULTLIB /ENTRY:WinMain /ALIGN:16 /SUBSYSTEM:windows /OUT:smlg
 PATH_TO_REPO\compressors\mpress\mpress -s -x smlgame.exe
 ```
 In this example the application is already smaller than mpress can improve on. 
+*Note: Make sure to replace PATH_TO_REPO with the path to this repository*  
 
 #### UPX
 This compressor is run on an exe or dll and tries to make it smaller. While testing this gave the largest results as it does not allow the use of the custom allignment. This made the code 4x larger before compressing and was only able to compress a small amount.
@@ -136,6 +140,7 @@ cl /c /W4 /O1 /Os /GS- smlgame.c
 link /nologo /NODEFAULTLIB /ENTRY:WinMain /SUBSYSTEM:windows /OUT:smlgame.exe smlgame.obj kernel32.lib user32.lib gdi32.lib
 PATH_TO_REPO\compressors\upx-3.96-win64\upx smlgame.exe
 ```
+*Note: Make sure to replace PATH_TO_REPO with the path to this repository*  
 
 #### Petite
 This compressor is run on an exe or dll and tries to make it smaller. 
@@ -146,6 +151,7 @@ cl /c /W4 /O1 /Os /GS- smlgame.c
 link /nologo /NODEFAULTLIB /ENTRY:WinMain /ALIGN:16 /SUBSYSTEM:windows /OUT:smlgame.exe smlgame.obj kernel32.lib user32.lib gdi32.lib
 PATH_TO_REPO\compressors\petite24\petite smlgame.exe
 ```
+*Note: Make sure to replace PATH_TO_REPO with the path to this repository*  
 
 ## Zbarcam
 Zbarcam is used for the qrcode detection. Zbar is currently maintained by mchehab [here](https://github.com/mchehab/zbar). This repository is included as a submodule of this repository for easy updating of the zbarcam application.  
@@ -205,3 +211,4 @@ rmdir /s /q qr\zbarcam\include
 rmdir /s /q qr\zbarcam\lib
 rmdir /s /q qr\zbarcam\share
 ```
+*Note: Make sure to replace PATH_TO_REPO with the path to this repository*  
