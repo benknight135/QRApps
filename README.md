@@ -12,6 +12,7 @@ Inspired by MattKC's snakeqr [snakeqr](https://itsmattkc.com/etc/snakeqr/)
 
 ## How to read QR code
 Read a QR code from your computer webcam.  
+As these use dense QR codes, phone screens will likely not be big enough to display the QR code for the detector to read it. I'd advise printing it off or using a tablet.  
 Download latest detector application from [here](https://github.com/benknight135/QRApps/releases/latest/download/detectQR.zip).  
 Extract detectQR.zip to your PC.  
 A script is provided to take the QR code and format it from the binary to a runnable exe.  
