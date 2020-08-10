@@ -1,9 +1,7 @@
 # QR Apps
 Store a small application or game on a QR code!  
-This project aims to embed all the binary data of an exe into a QR code.  
-This projects GitHub repostiory has some example programs with scripts for making sure the builds are small. Remember a QR can only be so big!  
-Also included in this projects GitHub repository are programs for generating and reading the QR codes.  
-This project was inspired by MattKC's snakeqr [snakeqr](https://itsmattkc.com/etc/snakeqr/)
+This project aims to embed all the binary data of an exe into a QR code. The repostiory has some example programs with scripts for making sure the builds are small. Remember a QR can only be so big! Also included are programs for generating and reading the QR codes.  
+Inspired by MattKC's snakeqr [snakeqr](https://itsmattkc.com/etc/snakeqr/)
 
 ## Apps
 ### SmlGame (by Ben Knight)
