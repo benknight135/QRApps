@@ -10,7 +10,7 @@ This project was inspired by MattKC's snakeqr [snakeqr](https://itsmattkc.com/et
 ### [SnakeQR](https://itsmattkc.com/etc/snakeqr/) (by MattKC)
 ![Alt text](https://github.com/benknight135/QRApps/blob/master/apps/snakeqr/snakeqr.png?raw=true "QR for SnakeQR by MattKC")
 
-## How to read QR code
+## How to read QR code (Windows x64 only)
 Read a QR code from your computer webcam.  
 As these use dense QR codes, phone screens will likely not be big enough to display the QR code for the detector to read it. I'd advise printing it off or using a tablet.  
 Download latest detector application from [here](https://github.com/benknight135/QRApps/releases/latest/download/detectQR.zip).  
